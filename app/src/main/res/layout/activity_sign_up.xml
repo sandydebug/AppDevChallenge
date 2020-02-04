@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:orientation="vertical"
+    tools:context=".SignUp">
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="203dp"
+        android:layout_height="53dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:text="SIGNUP"
+        android:layout_gravity="center"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+
+        android:textColor="#090808"
+        android:textSize="30sp" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="30dp"
+        android:layout_marginTop="10dp"
+        android:contentDescription="TODO"
+        android:src="@drawable/dp"
+        app:srcCompat="@drawable/dp"
+        />
+
+
+    <com.rengwuxian.materialedittext.MaterialEditText
+        android:id="@+id/etUserName"
+        met_floatingLabelTextColor="#000000"
+        met_floatingLabelTextSize="18sp"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        android:ems="10"
+        android:hint="NAME"
+        android:inputType="textPersonName"
+        app:met_floatingLabel="highlight"
+        app:met_floatingLabelText="FULL NAME" />
+
+    <com.rengwuxian.materialedittext.MaterialEditText
+        android:id="@+id/etUserEmail"
+        met_floatingLabelTextColor="#000000"
+        met_floatingLabelTextSize="18sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        android:ems="10"
+        android:hint="Email"
+        android:inputType="textEmailAddress"
+        app:met_floatingLabel="highlight"
+        app:met_floatingLabelText="EMAIL" />
+
+    <com.rengwuxian.materialedittext.MaterialEditText
+        android:id="@+id/etPassword"
+        met_floatingLabelTextColor="#000000"
+        met_floatingLabelTextSize="18sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="7dp"
+        android:ems="10"
+        android:hint="Password"
+        android:inputType="textPassword"
+        app:met_floatingLabel="highlight"
+        app:met_floatingLabelText="PASSWORD" />
+    <com.rengwuxian.materialedittext.MaterialEditText
+        android:id="@+id/phone"
+        met_floatingLabelTextColor="#000000"
+        met_floatingLabelTextSize="18sp"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        android:ems="10"
+        android:hint="Phone Number"
+        android:inputType="number"
+        app:met_floatingLabel="highlight"
+        app:met_floatingLabelText="Phone Number" />
+
+
+    <Button
+        android:id="@+id/btnRegister"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_gravity="center"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/back2"
+        android:text="Register"
+        android:textColor="#F8F5F5" />
+
+    <TextView
+        android:id="@+id/tvUserLogin"
+        android:layout_width="248dp"
+        android:layout_height="46dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_gravity="center"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="Already Signed in? Login"
+        android:textAlignment="center"
+        android:textColor="#050505"
+        android:textSize="22dp" />
+
+
+
+
+</LinearLayout>
