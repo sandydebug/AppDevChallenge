@@ -1,3 +1,8 @@
 <resources>
-    <string name="app_name">AppDevChallenge</string>
+    <string name="app_name">ADVAITA</string>
+    <string name="open_drawer">Opens navigation drawer</string>
+    <string name="close_drawer">Closes navigation drawer</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

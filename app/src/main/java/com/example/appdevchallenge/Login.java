@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
+import com.example.appdevchallenge.Model.ProfileData;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -216,7 +217,8 @@ public class Login extends AppCompatActivity {
                 String personPhoneURL = acct.getPhotoUrl().toString();*/
                 firebaseAuthWithGoogle(acct);
             } else {
-                Toast.makeText(Login.this,"There was a trouble signing in-Please try again",Toast.LENGTH_SHORT).show();;
+                progressDialog.dismiss();
+                //Toast.makeText(Login.this,"There was a trouble signing in-Please try again",Toast.LENGTH_SHORT).show();;
             }
         }
     }
@@ -244,7 +246,7 @@ public class Login extends AppCompatActivity {
                             Toast.makeText(Login.this, "Authentication failed.",
                                     Toast.LENGTH_SHORT).show();
                         }else{
-                            //databaseReference.child("USERS").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(new ProfileData(acct.getEmail(),acct.getDisplayName()));
+                            databaseReference.child("USERS").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(new ProfileData(acct.getEmail(),acct.getDisplayName(),"xxxxxxxxxx"));
                             Toast.makeText(Login.this, "Authentication pass.",
                                     Toast.LENGTH_SHORT).show();
                             progressDialog.dismiss();

@@ -33,7 +33,6 @@ public class MainActivity extends AppCompatActivity {
         ShimmerTextView textview  = findViewById(R.id.textView5);
         Shimmer shimmer = new Shimmer();
         shimmer.start(textview);
-
         if(firebaseAuth.getCurrentUser()==null) {
             new Handler().postDelayed(new Runnable() {
                 @Override
@@ -50,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
             new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    Intent intent = new Intent(MainActivity.this, Login.class);
+                    Intent intent = new Intent(MainActivity.this, DashBoard.class);
                     MainActivity.this.startActivity(intent);
                     MainActivity.this.finish();
                     overridePendingTransition(R.anim.mainfadein, R.anim.splashfadeout);
