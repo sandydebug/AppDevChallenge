@@ -58,6 +58,7 @@ public class MusicPlayer extends Fragment {
         songs.add("Malang Title Track by Arijit Singh");
         songs.add("Yeh Dooriyan by Mohit Chahaun");
         songs.add("Scary sound by unknown");
+        positionBar = v.findViewById(R.id.positionBar);
 
         adapter = new ArrayAdapter(getContext(),android.R.layout.simple_list_item_1,songs);
         listView.setAdapter(adapter);
@@ -96,11 +97,12 @@ public class MusicPlayer extends Fragment {
                 mp.seekTo(0);
                 mp.setVolume(0.5f, 0.5f);
                 totalTime = mp.getDuration();
+                positionBar.setMax(totalTime);
             }
         });
 
 
-        positionBar = v.findViewById(R.id.positionBar);
+
         positionBar.setMax(totalTime);
         positionBar.setOnSeekBarChangeListener(
                 new SeekBar.OnSeekBarChangeListener() {

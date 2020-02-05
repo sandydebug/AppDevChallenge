@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -24,6 +25,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 import static android.content.Context.MODE_PRIVATE;
 
 public class BottomSheetMail extends BottomSheetDialogFragment {
@@ -33,6 +37,8 @@ public class BottomSheetMail extends BottomSheetDialogFragment {
     private FirebaseDatabase firebaseDatabase;
     DatabaseReference mail;
     long count=0;
+    Calendar calendar;
+    SimpleDateFormat simpleDateFormat;
 
     @Nullable
     @Override
@@ -42,6 +48,9 @@ public class BottomSheetMail extends BottomSheetDialogFragment {
         editText1 = v.findViewById(R.id.mailid);
         editText2 = v.findViewById(R.id.msg);
         firebaseDatabase = FirebaseDatabase.getInstance();
+        calendar = Calendar.getInstance();
+        simpleDateFormat = new SimpleDateFormat("dd-MMM-yyyy");
+        final String date = simpleDateFormat.format(calendar.getTime());
         mail = FirebaseDatabase.getInstance().getReference("Mails");
         mail.child("EMAILS").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -75,7 +84,8 @@ public class BottomSheetMail extends BottomSheetDialogFragment {
                 }
                 else {
                     mListener.onButtonClicked1(editText1.getText().toString(), editText2.getText().toString());
-                    mail.child("EMAILS").child(String.valueOf(count)).setValue(new EmailModel("New Mail",id,"05-02-2020",mes));
+                    mail.child("EMAILS").child(String.valueOf(count)).setValue(new EmailModel(mes.substring(0,5)+" ...Continued",id,date,mes));
+                    Toast.makeText(getContext(),"Mail added successfully, Press Email tab to refresh ",Toast.LENGTH_LONG).show();
                     dismiss();
                 }
 

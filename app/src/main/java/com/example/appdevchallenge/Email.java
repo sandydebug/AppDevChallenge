@@ -29,7 +29,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 
 public class Email extends Fragment implements BottomSheetMail.BottomSheetListener {
@@ -43,6 +45,7 @@ public class Email extends Fragment implements BottomSheetMail.BottomSheetListen
     DatabaseReference mails;
     private ProgressDialog progressDialog;
 
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -51,6 +54,7 @@ public class Email extends Fragment implements BottomSheetMail.BottomSheetListen
         mRecyclerView = v.findViewById(R.id.recyclerView);
         editText = v.findViewById(R.id.searchSender);
         firebaseDatabase=FirebaseDatabase.getInstance();
+
         progressDialog=new ProgressDialog(getContext());
         progressDialog.setMessage("Hang on while we load your emails ");
         progressDialog.setCancelable(false);
