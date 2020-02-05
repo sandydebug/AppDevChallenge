@@ -46,7 +46,7 @@ import com.google.firebase.storage.StorageReference;
 import com.mikhaellopez.circularimageview.CircularImageView;
 import com.squareup.picasso.Picasso;
 
-public class DashBoard extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class DashBoard extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener,BottomSheetInfo.BottomSheetListener,BottomSheetMail.BottomSheetListener {
 
 
 private FirebaseAuth firebaseAuth;
@@ -117,11 +117,20 @@ private TextView useName,useEmail;
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         switch(menuItem.getItemId()){
             case R.id.profile:
-                startActivity(new Intent(DashBoard.this,Profile.class));
+                Intent i = new Intent(Intent.ACTION_SEND);
+                i.setType("message/rfc822");
+                i.putExtra(Intent.EXTRA_EMAIL  , new String[]{"subhamhazra25@gmail.com"});
+                i.putExtra(Intent.EXTRA_SUBJECT, "Issue or Compliment");
+                i.putExtra(Intent.EXTRA_TEXT   , "Hey Sandy, ");
+                try {
+                    startActivity(Intent.createChooser(i, "Send mail..."));
+                } catch (android.content.ActivityNotFoundException ex) {
+                    Toast.makeText(DashBoard.this, "There are no email clients installed.", Toast.LENGTH_SHORT).show();
+                }
                 break;
             case R.id.about:
-               /* BottomSheetInfo bottomSheet = new BottomSheetInfo();
-                bottomSheet.show(getSupportFragmentManager(), "exampleBottomSheet");*/
+                BottomSheetInfo bottomSheet = new BottomSheetInfo();
+                bottomSheet.show(getSupportFragmentManager(), "exampleBottomSheet");
                 break;
 
             case R.id.logout:
@@ -243,4 +252,13 @@ private TextView useName,useEmail;
                 }
 
             };
+
+    @Override
+    public void onButtonClicked(String text) {
+        //Toast.makeText(this,"Sandy",Toast.LENGTH_SHORT).show();
+    }
+    @Override
+    public void onButtonClicked1(String from,String msg) {
+        //Toast.makeText(getContext(),from+"  "+msg,Toast.LENGTH_SHORT).show();
+    }
 }

@@ -12,7 +12,7 @@ import com.romainpiel.shimmer.ShimmerTextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static int SPLASH_TIME_OUT = 1000;
+    private static int SPLASH_TIME_OUT = 700;
     private FirebaseAuth firebaseAuth;
 
     @Override

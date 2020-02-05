@@ -35,6 +35,7 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
 
@@ -46,6 +47,8 @@ public class Weather extends Fragment {
     ImageButton search;
     ImageView weathericon;
     private ProgressDialog progressDialog;
+    Calendar calendar;
+    SimpleDateFormat simpleDateFormat;
 
     @Nullable
     @Override
@@ -60,6 +63,10 @@ public class Weather extends Fragment {
         textView4 = v.findViewById(R.id.MinTemp);
         textView5 = v.findViewById(R.id.Temp);
         textView6 = v.findViewById(R.id.date);
+        calendar = Calendar.getInstance();
+        simpleDateFormat = new SimpleDateFormat("dd-MMM-yyyy");
+        final String date = simpleDateFormat.format(calendar.getTime());
+        textView6.setText(date);
         weathericon = v.findViewById(R.id.WeatherIcon);
         progressDialog=new ProgressDialog(getContext());
         editText.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -83,7 +90,7 @@ public class Weather extends Fragment {
 
     public void showWeather(String name) throws MalformedURLException {
 
-        progressDialog.setMessage("Hang on bitch ");
+        progressDialog.setMessage("Let's get the weather in "+editText.getQuery().toString());
         progressDialog.setCancelable(false);
         progressDialog.show();
 
@@ -146,8 +153,10 @@ public class Weather extends Fragment {
                     String info = jsonObject.getString("weather");
                     String city = jsonObject.getString("name");
                     String info2 = jsonObject.getString("main");
+                    String info3 = jsonObject.getString("sys");
                     JSONArray arr = new JSONArray(info);
                     JSONObject arr2 = new JSONObject(info2);
+                    JSONObject arr3 = new JSONObject(info3);
                     for (int i = 0; i < arr.length(); i++) {
                         JSONObject part = arr.getJSONObject(i);
                         Double tem = Double.parseDouble(arr2.getString("temp")) - 273;
@@ -177,7 +186,7 @@ public class Weather extends Fragment {
                         textView5.setText(temp + (char) 0x00B0);
                         textView4.setText(tempmin + (char) 0x00B0);
                         textView3.setText(tempmax + (char) 0x00B0);
-                        textView1.setText(city);
+                        textView1.setText(city+","+arr3.getString("country"));
                         textView2.setText(part.getString("main"));
                         textView6.setText(getDate(Long.parseLong(jsonObject.getString("dt"))));
                         progressDialog.dismiss();
