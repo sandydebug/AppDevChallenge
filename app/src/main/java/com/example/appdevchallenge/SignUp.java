@@ -178,12 +178,11 @@ public class SignUp extends AppCompatActivity {
         name = editText1.getText().toString();
         email = editText2.getText().toString();
         password = editText3.getText().toString();
-        location = editText4.getText().toString();
         phone = editText5.getText().toString();
 
         progressDialog.setMessage("Hang on while we register your profile ");
         progressDialog.show();
-        if (name.isEmpty() || email.isEmpty() || password.isEmpty() || location.isEmpty() || phone.isEmpty()) {
+        if (name.isEmpty() || email.isEmpty() || password.isEmpty() || phone.isEmpty()) {
             Toast.makeText(SignUp.this, "Enter all the details", Toast.LENGTH_SHORT).show();
             progressDialog.dismiss();
         }
