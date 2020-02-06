@@ -75,7 +75,11 @@ public class Login extends AppCompatActivity {
         textView=(TextView)findViewById(R.id.textView);
         textView1=(TextView)findViewById(R.id.forgot);
         firebaseAuth=FirebaseAuth.getInstance();
-        progressDialog=new ProgressDialog(this);
+        progressDialog = new ProgressDialog(this) {
+            @Override
+            public void onBackPressed() {
+                progressDialog.dismiss();
+            }};
         final FirebaseUser firebaseUser=firebaseAuth.getCurrentUser();
         databaseReference = FirebaseDatabase.getInstance().getReference("PROFILES");
 
@@ -163,6 +167,7 @@ public class Login extends AppCompatActivity {
     private void validate(String username,String password){
 
         progressDialog.setMessage("Hang on while we connect you ");
+        progressDialog.setCancelable(false);
         progressDialog.show();
         firebaseAuth.signInWithEmailAndPassword(username,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override

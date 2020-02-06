@@ -55,7 +55,11 @@ public class Email extends Fragment implements BottomSheetMail.BottomSheetListen
         editText = v.findViewById(R.id.searchSender);
         firebaseDatabase=FirebaseDatabase.getInstance();
 
-        progressDialog=new ProgressDialog(getContext());
+        progressDialog = new ProgressDialog(getContext()) {
+            @Override
+            public void onBackPressed() {
+                progressDialog.dismiss();
+            }};
         progressDialog.setMessage("Hang on while we load your emails ");
         progressDialog.setCancelable(false);
         progressDialog.show();
